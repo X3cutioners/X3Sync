@@ -12,8 +12,6 @@ headers = {
     'User-Agent': ua.chrome
 }
 
-# Sample Key : 184577lf6oolhfhjviny
-
 def check_access(api_key):
     response = requests.get(f'https://{host_api_domain}/api/account/info?key={api_key}', headers=headers).json()
     if response['status'] == 200:
@@ -48,7 +46,7 @@ def upload_file(api_key=None, file_path=None, file_url=None):
             return {"error": "Invalid API Key"}
     else:
         return {"error": "No API Key Provided"}
-    
+
 def extract_url(file_id):
     payload = {
     "op": "download3",
