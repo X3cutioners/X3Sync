@@ -6,8 +6,8 @@ from fake_useragent import UserAgent
 scraper = cloudscraper.create_scraper()
 
 # File Host Info
-host_domain = "sharemods.com"
-host_api_domain = "sharemods.com"
+host_domain = "modsbase.com"
+host_api_domain = "modsbase.com"
 
 # File Host Headers
 ua = UserAgent()
@@ -26,6 +26,8 @@ def extract_url(file_id):
     }
     response = scraper.post(f'https://{host_domain}', data=payload)
     soup = BeautifulSoup(response.text, 'html.parser')
-    download_url = soup.find_all("a", {"id": "downloadbtn"})[0]
-    download_url = download_url['href']
+    download_btn = soup.find('button', {'id': 'downloadbtn'})
+    download_url = download_btn.find('a')['href']
     return {"file_url": download_url, 'status': 200}
+
+print(extract_url('gu7ewt0rqasq'))
