@@ -29,5 +29,3 @@ def extract_url(file_id):
     download_btn = soup.find('button', {'id': 'downloadbtn'})
     download_url = download_btn.find('a')['href']
     return {"file_url": download_url, 'status': 200}
-
-print(extract_url('gu7ewt0rqasq'))
