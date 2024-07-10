@@ -19,13 +19,6 @@ def check_access(api_key):
     else:
         return False
 
-def get_upload_server(api_key):
-    response = requests.get(f'https://{host_api_domain}/api/upload/server?key={api_key}', headers=headers).json()
-    if response['status'] == 200:
-        return response
-    else:
-        return False
-
 def upload_file(api_key=None, file_path=None, file_url=None):
     if api_key:
         if check_access(api_key):
